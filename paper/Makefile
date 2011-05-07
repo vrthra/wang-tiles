@@ -1,14 +1,17 @@
 all: wang.pdf
 
 cleanup:
-	-rm *.aux *.log *.out *.pdf *.bbl *.blg *.dvi
+	rm -f *.aux *.log *.out *.bbl *.blg
+
+clobber: cleanup
+	rm -f *.dvi *.pdf
 
 %.pdf : %.tex %.bib
 	latex $*
 	bibtex $*
 	latex $*
 	pdflatex $*
-	make $(cleanup)
+	$(MAKE) cleanup
 
 %.pdf : %.eps
 	convert $*.eps $@
