@@ -30,7 +30,7 @@ lin@eecs.oregonstate.edu
 \maketitle
 
 \begin{abstract}
-Wang tiles were first proposed by the mathematician Hao Wang in 1961. These are four coloured tiles such that the four edges in a tile have different colours. These also have the property that two tiles can be laid edge to edge if and only if their edge colours match. The basic question about wang tiles are whether a given set of tiles can tile an infinte plane. In this paper we examine Wang tiles that are aperiodic\cite{undecide}. We also examine a way to encode functions into Wang tiles and as an example consider how we can encode a fibonacci number series into a Wang tiling \cite{tilings}.
+Wang tiles were first proposed by the mathematician Hao Wang in 1961 \cite{wang}. These are four coloured tiles such that the four edges in a tile have different colours. These also have the property that two tiles can be laid edge to edge if and only if their edge colours match. The basic question about wang tiles are whether a given set of tiles can tile an infinte plane. In this paper we examine Wang tiles that are aperiodic\cite{undecide}. We also examine a way to encode functions into Wang tiles and as an example consider how we can encode a fibonacci number series into a Wang tiling \cite{tilings}.
 \end{abstract}
 
 \section*{Introduction}
@@ -40,6 +40,11 @@ Wang presented an algorithm that tried to decide if any finite set of prototiles
 
 In this paper we also include one encoding of a turing machine that computes fibonacci numbers in Wang tiles.
 
+\section*{Related Work}
+Need references here.
+
+\section*{Simulation}
+Our haskell simulation.
 
 \section*{Conclusion}
 In this paper we explored wang tiles that are able to tile a plane aperiodically. For this we used two different techniques. The first was direct tiling as given in \cite{tilings}, and later by simulating a Turing machine on the Wang tiles as given in \cite{tmtiles}.
