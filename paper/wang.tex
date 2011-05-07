@@ -43,10 +43,17 @@ Wang presented an algorithm that tried to decide if any finite set of prototiles
 In this paper we also include one encoding of a turing machine that computes fibonacci numbers in Wang tiles.
 
 \section*{Aperiodic Tiling}
-It is possible to encode functions as aperiodic tilings using the Wang tilings. Below we present one of the possible ways to encode fibonacci series. (Explanation of our tilings)
+It is possible to encode functions as aperiodic tilings using the Wang tilings. Roger Berger discovered the first aperiodic set of tiles\cite{undecide}. It took him 20426 tiles to demonstrate the aperiodicity of tilings. Before this was accomplished, the prevailing notion was Wang's conjencture that no aperiodic tile sets existed. The number of tiles required was later reduced to just 13. While it may be reduced further, the only firm lower bound we know is that from an unpublished result by Robinson that states that no aperiodic set of four Wang tiles can exist.
+
+The method of construction used is called expanding squares. It is based on the idea of superimposing a number of related things. Below we present one of the possible ways to encode fibonacci series.
 
 \section*{Turing Machines}
-It was shown later that it is possible to encode Turing machines into wang tiles.
+A Turing machine is a formal way of describing computation. It is described as an abstract computer that has the capability of reading and writing symbols on tape extendable infinitely on atleast one side. The machine starts in a given state, and reads a symbol on the tape, and depending on the combination of symbol read and the state the machine is in, it may write a new symbol, and move forwards or backwords on the infinite tape.
+
+We can simulate any Turing machine using Wang tiles by taking advantage of the fact that each Wang tile forces the arrangement of its neighbours. In particular we can treat a row of Wang tiles as the state of Turing machine tape at an instant of time. Since the state of Turing machine is determined completely by its past history, This construction gives us the ability to simulate each instant of a Turing machine in a single row. The same way that the next instant is forced on the turing machine by the state it is in, and the history of the machine, the next row is forced on the Wang tiles by the current row.
+
+We give below a few simulations of Turing machines using Wang tiles.
+
 
 \section*{Related Work}
 Expand on the first T.M with 2000 tiles, reduced to 104, and later 13. Penrose tiling, Wolfram cellular automata. DNA computing, 3D wang tiles.
