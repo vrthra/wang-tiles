@@ -10,8 +10,10 @@ clobber: cleanup
 	latex $*
 	bibtex $*
 	latex $*
-	pdflatex $*
+	pdflatex --shell-escape --synctex=1 $*
 	$(MAKE) cleanup
+
+#epstool --copy --bbox wang13.eps 1.eps
 
 %.pdf : %.eps
 	convert $*.eps $@

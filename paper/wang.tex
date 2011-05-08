@@ -3,10 +3,10 @@
 \usepackage {amsmath}
 \usepackage {alltt}
 \usepackage{graphicx} 
+\usepackage{epstopdf}
 \usepackage{caption} 
 \usepackage{fancyvrb,relsize}
 \usepackage[latin1]{inputenc}
-
 \begin{document}
 
 \title{Computing With Tiles}
@@ -45,6 +45,12 @@ In this paper we also include one encoding of a turing machine that computes fib
 \section*{Aperiodic Tiling}
 It is possible to encode functions as aperiodic tilings using the Wang tilings. Roger Berger discovered the first aperiodic set of tiles\cite{undecide}. It took him 20426 tiles to demonstrate the aperiodicity of tilings. Before this was accomplished, the prevailing notion was Wang's conjencture that no aperiodic tile sets existed. The number of tiles required was later reduced to just 13. While it may be reduced further, the only firm lower bound we know is that from an unpublished result by Robinson that states that no aperiodic set of four Wang tiles can exist.
 
+\begin{figure}
+\includegraphics[scale=0.4]{wang13.eps} 
+\caption{Smallest aperiodic wang tiles.}
+\label{fig:wang13}
+\end{figure}
+
 The method of construction used is called expanding squares. It is based on the idea of superimposing a number of related things. Below we present one of the possible ways to encode fibonacci series.
 
 \section*{Turing Machines}
@@ -60,6 +66,9 @@ Expand on the first T.M with 2000 tiles, reduced to 104, and later 13. Penrose t
 
 \section*{Simulation}
 Our haskell simulation.
+
+\section*{Application}
+Applications of Wang tilings e.g texture generation in graphics.
 
 \section*{Conclusion}
 In this paper we explored wang tiles that are able to tile a plane aperiodically. For this we used two different techniques. The first was direct tiling as given in \cite{tilings}, and later by simulating a Turing machine on the Wang tiles as given in \cite{tmtiles}.
