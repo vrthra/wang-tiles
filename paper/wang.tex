@@ -62,13 +62,12 @@ We give below a few simulations of Turing machines using Wang tiles.
 
 
 \section*{Related Work}
-Expand on the first T.M with 2000 tiles, reduced to 104, and later 13. Penrose tiling, Wolfram cellular automata. DNA computing, 3D wang tiles.
+The original solution to Turing machine with Wang tiles was created using 20,426 tiles by Berger. It was later brought down to 104 by him, and later to just 13 tiles by Karel Culik \cite{culik}. Wang tiles are just one form of tiling. Another was discovered by Roger Penrose called Penrose tiling. Penrose tiling \cite{penrose} is a non-periodic self similar quasi crystal tiling of a plane, and the smallest number of tiles required for tiling a plane is just two. Another related field is cellular automata. These also produce very complex and often turing complete patterns with very simple rules \cite{wolfram}. One of the smallest cellular automata was proven recently to be turing complete \cite{cook}.
+
+A few other applications of wang tiles include graphics texture generation \cite{texture}, Molecular self assembly \cite{assembly} and DNA computing \cite{dna}. Wang cubes \cite{cubes} the 3-D analog of Wang tiles have also been a field of research for its properties in video generation.
 
 \section*{Simulation}
 Our haskell simulation.
-
-\section*{Application}
-Applications of Wang tilings e.g texture generation in graphics.
 
 \section*{Conclusion}
 In this paper we explored wang tiles that are able to tile a plane aperiodically. For this we used two different techniques. The first was direct tiling as given in \cite{tilings}, and later by simulating a Turing machine on the Wang tiles as given in \cite{tmtiles}.
