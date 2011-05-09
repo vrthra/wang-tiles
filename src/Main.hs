@@ -1,6 +1,5 @@
 module Main where
 import Wang
-import Text.JSON
 
 x = 3
 

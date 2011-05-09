@@ -5,7 +5,7 @@ data Tile a b = T a b b a
 
 type NTile = Tile String Int
 
-data St = A | B | C | D | E | F | G | H | I
+data St = A | B | C | D | E | F | G | H | I | J | K | L | M | N | O
                 deriving (Show)
 
 
@@ -25,6 +25,12 @@ f i = "f " ++ (show i)
                G -> 70 + i
                H -> 80 + i
                I -> 90 + i
+               J -> 100 + i
+               K -> 110 + i
+               L -> 120 + i
+               M -> 130 + i
+               N -> 140 + i
+               O -> 150 + i
 infixl 1 #
 
 getHeadIdx line = case List.elemIndex h line of
@@ -43,13 +49,17 @@ lOrR line t = case getHeadIdx line of
                                             t -> error $ ">>" ++ (show t)
 
 trans line t lside rside = case lOrR line t of
-     (lidx, ridx, mid) -> (lside y) ++ tr1 ++ tr2 ++ (rside z)
+     (lidx, ridx, mid) -> ans
           where (T l1 u1 d1 r1) =  line !! lidx
                 (T l2 u2 d2 r2) =  line !! ridx
-                tr1 = [t | t@(T l u d r) <- t, l == b && mid == r && u == d1] 
-                tr2 = [t | t@(T l u d r) <- t, r == b && mid == l && u == d2]
+                [tr1] = [t | t@(T l u d r) <- t, l == b && mid == r && u == d1] 
+                [tr2] = [t | t@(T l u d r) <- t, r == b && mid == l && u == d2]
                 y = fst (splitAt lidx line)
                 z = snd (splitAt (ridx +1) line)
+                ans = (lside y) ++ [tr1] ++ [tr2] ++ (rside z)
+
+
+dtrans line t lside rside = show (lOrR line t)
 
 
                    
