@@ -5,7 +5,7 @@ data Tile a b = T a b b a
 
 type NTile = Tile String Int
 
-data St = A | B | C | D | E | F | G | H | I | J | K | L | M | N | O
+data St = A | AS | B | C | D | E | F | G | H | I | IS | J | K | L | M | N | O
                 deriving (Show)
 
 
@@ -17,6 +17,7 @@ b = "_"
 f i = "f " ++ (show i)
 (#) fn i = case fn of
                A -> 10 + i
+               AS-> 210+ i
                B -> 20 + i
                C -> 30 + i
                D -> 40 + i
@@ -25,6 +26,7 @@ f i = "f " ++ (show i)
                G -> 70 + i
                H -> 80 + i
                I -> 90 + i
+               IS ->290 + i
                J -> 100 + i
                K -> 110 + i
                L -> 120 + i
@@ -69,4 +71,3 @@ ud t = map u t
     where u (T _ u d _) = [u,d]
 lr t = map l t
     where l (T l u d r) = [l,r]
-
