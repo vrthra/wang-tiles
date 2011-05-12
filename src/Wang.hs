@@ -1,7 +1,10 @@
 module Wang where
 import List
 data Tile a b = T a b b a
-                deriving (Eq, Show)
+                deriving (Eq)
+
+instance (Show a, Show b) => Show (Tile a b) where
+    show (T a b b' a') = (show a) ++ (show b) ++ "*" ++ (show b') ++ (show a')
 
 type NTile = Tile String Int
 
