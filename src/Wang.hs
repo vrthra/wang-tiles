@@ -8,7 +8,7 @@ instance (Show a, Show b) => Show (Tile a b) where
 
 type NTile = Tile String Int
 
-data St = A | AS | B | C | D | E | F | G | H | I | IS | J | K | L | M | N | O
+data St = A | AS | B | C | D | E | F | G | H | I | IS | J | K | L | M | N | O | Q0 | Q3 | Q4 | Q5 | Q6 | Q7 | Q8 | Q21 | Q35 | Q36 | Q50 | Q51 | Q52 | Q100
                 deriving (Show)
 
 
@@ -36,6 +36,20 @@ f i = "f " ++ (show i)
                M -> 130 + i
                N -> 140 + i
                O -> 150 + i
+               Q0 -> 10 + i
+               Q3 -> 30 + i
+               Q4 -> 40 + i
+               Q5 -> 50 + i
+               Q6 -> 60 + i
+               Q7 -> 70 + i
+               Q8 -> 80 + i
+               Q21 -> 210 + i
+               Q35 -> 350 + i
+               Q36 -> 360 + i
+               Q50 -> 500 + i
+               Q51 -> 510 + i
+               Q52 -> 520 + i
+               Q100 -> 1000 + i
 infixl 1 #
 
 getHeadIdx line = case List.elemIndex h line of
@@ -74,3 +88,4 @@ ud t = map u t
     where u (T _ u d _) = [u,d]
 lr t = map l t
     where l (T l u d r) = [l,r]
+
