@@ -1,6 +1,5 @@
 module Mul where
 import Wang
-import Text.JSON
 
 -- Wang tiles for multiplication
 -- Converted from the the Turing machine on http://people.oregonstate.edu/~gopinatr/turing/tm.html
@@ -44,7 +43,6 @@ q81z = T (f(Q8#1)) 1 (Q8#1) b
 q80x = T b (Q8#0) 0 (f(Q8#0)) 
 q80y = T (f(Q8#0)) 0 (Q21#0) b 
 q80z = T (f(Q8#0)) 1 (Q21#1) b 
-:setlocal nonumber                                                                                                                                       1,1           Top
 q351y = T (f(Q35#1)) 0 (Q36#0) b
 q351z = T (f(Q35#1)) 1 (Q36#1) b
 q361x = T (f(Q36#1)) (Q36#1) 0 b
@@ -66,16 +64,11 @@ q520z = T b 1 (Q100#1) (f(Q52#0))
 side [] = []
 side (T l u d r:ls) = T b d d b : (side ls)
 
-tiles = [
-q0, q1, qs, q00x, q00y, q00z, q31x, q31y, q31z, q30x, q30y, q30z, q41x, q41y, q41z, q51x, q51y, q51z, q50x, q50y,
-q50z, q61x, q61y, q61z, q60x, q60y, q60z, q71x, q71y, q71z, q81x, q81y, q81z, q80x, q80y, q80z, q211x, q211y, q211z, q221x,
-q221y, q221z, q220x, q220y, q220z, q231x, q231y, q231z, q230x, q230y, q230z, q240x, q240y, q240z, q251x, q251y, q251z, q250x, q250y, q250z,
-q261x, q261y, q261z, q271x, q271y, q271z, q270x, q270y, q270z, q260x, q260y, q260z, q310x, q310y, q310z, q321x, q321y, q321z, q320x, q320y,
-q320z, q331x, q331y, q331z, q341x, q341y, q341z, q340x, q340y, q340z, q350x, q350y, q350z, q351x, q351y, q351z, q361x, q361y, q361z, q501x,
-q501y, q501z, q510x, q510y, q510z, q521x, q521y, q521z, q520x, q520y, q520z]
+tiles = [ q0, q1, qs, q00x, q00y, q00z, q31x, q31y, q31z, q30x, q30y, q30z, q41x, q41y, q41z, q51x, q51y, q51z, q50x, q50y, q50z, q61x, q61y, q61z, q60x, q60y, q60z, q71x, q71y, q71z, q81x, q81y, q81z, q80x, q80y, q80z, q211x, q211y, q211z, q221x, q221y, q221z, q220x, q220y, q220z, q231x, q231y, q231z, q230x, q230y, q230z, q240x, q240y, q240z, q251x, q251y, q251z, q250x, q250y, q250z, q261x, q261y, q261z, q271x, q271y, q271z, q270x, q270y, q270z, q260x, q260y, q260z, q310x, q310y, q310z, q321x, q321y, q321z, q320x, q320y, q320z, q331x, q331y, q331z, q341x, q341y, q341z, q340x, q340y, q340z, q350x, q350y, q350z, q351x, q351y, q351z, q361x, q361y, q361z, q501x, q501y, q501z, q510x, q510y, q510z, q521x, q521y, q521z, q520x, q520y, q520z]
 
 
-nitial = [q0, qs, q1, q1, q1, q0, q1, q1, q1, q1, q0] ++ repeatT q0 20
+
+initial = [q0, qs, q1, q1, q1, q0, q1, q1, q1, q1, q0] ++ repeatT q0 20
 
 loop initconf 0 = do putStrLn (show initconf)
 
