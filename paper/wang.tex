@@ -75,7 +75,7 @@ If it was moved right, then it would be\\
 {\bf(newstate,symbol,(newsymbol,newstate),blank)}\\
 Notice how we can always tell where the read write head is by looking for a tuple at the bottom of the tiles. At any point there would be atmost a single tuple at the bottom when we encode a turing machine this way.
 
-We give below a few simulations of Turing machines using Wang tiles.
+We give two simulations of Turing machines using Wang tiles in simulation section.
 
 \section*{Related Work}
 The original solution to Turing machine with Wang tiles was created using 20,426 tiles by Berger. It was later brought down to 104 by him, and later to just 13 tiles by Karel Culik \cite{culik}. Wang tiles are just one form of tiling. Another was discovered by Roger Penrose called Penrose tiling. Penrose tiling \cite{penrose} is a non-periodic self similar quasi crystal tiling of a plane, and the smallest number of tiles required for tiling a plane is just two. Another related field is cellular automata. These also produce very complex and often turing complete patterns with very simple rules \cite{wolfram}. One of the smallest cellular automata was proven recently to be turing complete \cite{cook}.
@@ -84,6 +84,36 @@ A few other applications of wang tiles include graphics texture generation \cite
 
 \section*{Simulation}
 We modelled the Wang tiles using haskell, and used it to verify our constructions. Our model includes facilities to input the tilings used, the initial configuration and the constraining side tiles. 
+
+\subsection*{Natural Number Multiplication}
+In this example, we simulate multiplication of natural numbers. We first write code of a Turing machine for multiplication, and then translate it to Wang tile representations. We use a Turing machine which has one track infinite in both ends and a symbol set $\{0, 1\}$. Numbers are represented in unary form. Number $n$ is represented as a $0$ and $n + 1$ following 1s. For example, 0 is represented as $01$, and 1 is denoted as $011$. 
+
+For the multiplication Turing machine, two input numbers are stored consecutively and its head is at the first bit of the first number. Then multipliation is calculated in three steps. In first step, the head checking whether first number is zero by reading all its bits. If it is zero, it removes the second number, goes back to the first bit and halts. The return value is 0. Else, the machine executes the second step. The head removes the first 1 of first number, and copy the second number to a new number following the second one. Then it remove the ending 1 of new copied number. The second step is repeated util there is only one 1 in the first number. In the third step, it removes the first and the second number, adds a 1 to the third number and halts. The return value is the third number. 
+
+The turing code is then translated to Wang tiles. In Wang tile representation, input is the first row of tiles. The first significant tile starts the turing machine. Its upper lower side is $(Q0\#0)$, which indicate the first state is $Q0$ and its input is $0$. After it are tiles whose lower sides are in color $1$, representing $1$s of the first input number. Then lower sides of the following tiles represents of the second number. In following rows, each row corresponds to a Turing machine step. In final row, lower sides of tiles represents the result of multiplication. The pattern of multiplication is shown in appendix. 
+
+
+\subsection*{Fibonacci Numbers}
+The first example of simulation is a Wang tiling which calculates Fibonacci numbers. Three tape symbols are used. A's are used to represent Fibonacci numbers in unary, x's are used to seperate Fibonacci numbers and 1's are auxiliary symbols used in calculation. The initial tape is $ x1x1x $, and the corresponding row of Wang tiles is 
+
+$ (b, x, (s,x), b) (b, 1, 1, b) (b, x, x, b) (b, 1, 1, b) (b, x, x, b) $, 
+
+where $ b $ represents $ blank $ color and $ s $ is the initial state. Suppose the first instruction to apply is $ s \; x \; x \; R \; s $, which indicates that the read head should move right for a square and keep the state and symbol unchanged. Four Wang tiles are generated to simulate this transition. They are shown as follows. 
+
+$ (b, (s,x), x, \delta(s,x)) $
+
+$ (\delta(s,x), 1, (s,1), b) $
+
+$ (\delta(s,x), x, (s,x), b) $
+
+$ (\delta(s,x), A, (s,A), b) $
+
+The first tile has a top edge with color $ (s,x) $ and right edge with color $ \delta(s,x)) $, which indicates that it is a transition for $ \delta(s,x)) $. The bottom edge is $ x $, which means the symbol is unchanged. The second, thrid and forth tiles have the same color $ \delta(s,x) $ for the left edge, and are to be placed next to the first one to complete the transition. Since the original content of the square is unknown, three tiles are needed to cover all possibilities. The colors of bottom edges indicate that the read head should be moved to these squares. So the second line is 
+
+$ (b, (s,x), x, \delta(s,x)) (\delta(s,x), 1, (s,1), b) (b, x, x, b) (b, 1, 1, b) (b, x, x, b) $, 
+
+where the read head is successfully moved to the second square and the symbol and state are left unchanged. The complete simulation is shown in Appendix I. 
+
 
 \section*{Conclusion}
 In this paper we explored wang tiles that are able to tile a plane aperiodically. For this we used two different techniques. The first was direct tiling as given in \cite{tilings}, and later by simulating a Turing machine on the Wang tiles as given in \cite{tmtiles}.
